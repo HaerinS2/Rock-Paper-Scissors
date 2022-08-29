@@ -46,7 +46,12 @@ new Vue({
       yourLife: function(newVal){
         if(newVal === 0){
           setTimeout(()=>{
-            alert("패배")
+            Swal.fire({
+              icon: 'error',
+              title: '패배',
+              text: '아쉬워요, 그래도 다음 번엔 더 잘 할 거예요!',
+              backdrop: `rgba(255,0,0,0.2)`
+            })
             this.resetGame()
           }, 500)
           
@@ -55,7 +60,12 @@ new Vue({
       comLife: function(newVal){
         if(newVal === 0){
           setTimeout(()=>{
-            alert("승리")
+            Swal.fire({
+              icon: 'success',
+              title: '승리',
+              text: '대단해요! 당신이 이겼어요!',
+              backdrop: `rgba(0,255,0,0.2)`
+            })
             this.resetGame()
           }, 500)
         }
@@ -64,7 +74,10 @@ new Vue({
     methods:{
       startGame: function(){
         if(this.yourChoice === null){
-          alert('가위, 바위, 보 중 하나를 선택해주세요.')
+          Swal.fire({
+          text: '가위, 바위, 보 중 하나를 선택해주세요.',
+          backdrop: `rgba(0,0,255,0.2)`
+          })
         } else{
           //게임을 시작하고 선택 완료 버튼 숨김
           this.selectable = false
